@@ -5,6 +5,15 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
+  # Task Manager CRUD routes (defined manually, without resources)
+  get "tasks", to: "tasks#index"
+  get "tasks/:id", to: "tasks#show"
+  get "tasks/new", to: "tasks#new"
+  post "tasks", to: "tasks#create"
+  get "tasks/:id/edit", to: "tasks#edit"
+  patch "tasks/:id", to: "tasks#update"
+  delete "tasks/:id", to: "tasks#destroy"
+
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
