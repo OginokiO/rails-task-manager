@@ -1,0 +1,8 @@
+<h1>Edit Task</h1>
+
+<%# Renderiza el partial tasks/form. En edit, @task es un registro existente
+    (new_record? == false), por lo que el campo "completed" SÍ se muestra.
+    Se pasa @task como variable local task al partial. %>
+<%= render "tasks/form", task: @task %>
+
+<%= link_to "Volver a la lista", tasks_path, class: "btn btn-secondary" %>

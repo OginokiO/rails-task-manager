@@ -1,9 +1,29 @@
 <h1>Tasks</h1>
 
-<ul>
-  <% @tasks.each do |task| %>
-    <li>
-      <%= link_to task.title, task_path(task.id) %>
-    </li>
-  <% end %>
-</ul>
+<%# Enlace para crear una nueva tarea (redirige a la acción new) %>
+<%= link_to "Nueva tarea", new_task_path, class: "btn btn-primary mb-3" %>
+
+<%# Tabla de Bootstrap para mostrar las tareas %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= link_to task.title, task_path(task.id) %></td>
+        <td>
+          <%# Botón eliminar con icono de Font Awesome y confirmación de Turbo (Rails 8) %>
+          <%= link_to task_path(task.id),
+                      data: { turbo_method: :delete, turbo_confirm: "¿Estás seguro de que quieres eliminar esta tarea?" },
+                      class: "btn btn-danger btn-sm" do %>
+            <i class="fa-solid fa-trash"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

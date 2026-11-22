@@ -1,11 +1,20 @@
+<%# Muestra el título de la tarea (variable @task cargada en la acción show del controlador) %>
 <h1><%= @task.title %></h1>
 
-<p>
-  <strong>Detalles:</strong> <%= @task.details %>
-</p>
+<div class="card mt-3">
+  <div class="card-body">
+    <%# Muestra los detalles de la tarea %>
+    <p class="card-text">
+      <strong>Detalles:</strong> <%= @task.details %>
+    </p>
 
-<p>
-  <strong>Completada:</strong> <%= @task.completed ? "Sí" : "No" %>
-</p>
+    <%# Muestra si la tarea está completada: "Sí" o "No" %>
+    <p class="card-text">
+      <strong>Completada:</strong> <%= @task.completed ? "Sí" : "No" %>
+    </p>
+  </div>
+</div>
 
-<%= link_to "Volver a la lista", tasks_path %>
+<%# Enlaces para editar o volver al listado %>
+<%= link_to "Editar", edit_task_path(@task.id), class: "btn btn-warning" %> |
+<%= link_to "Volver a la lista", tasks_path, class: "btn btn-secondary" %>

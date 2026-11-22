@@ -1,0 +1,8 @@
+<h1>New Task</h1>
+
+<%# Renderiza el partial tasks/form. En new, @task es un registro nuevo
+    (new_record? == true), por lo que el campo "completed" NO se muestra.
+    Se pasa @task como variable local task al partial. %>
+<%= render "tasks/form", task: @task %>
+
+<%= link_to "Volver a la lista", tasks_path, class: "btn btn-secondary" %>
